@@ -528,7 +528,7 @@ h1.campaign-title .title-accent { color: var(--gold); display: block; }
     <div class="question-group" id="qg-situacion">
       <label class="question-label">¿Cuál es su situación actual? <span class="required-star">*</span></label>
       <p class="question-hint">Puede marcar varias opciones</p>
-      <div class="options-grid" id="situacion-grid">
+      <div class="options-grid" id="situacion-grid" data-max="8">
         <label class="option-item"><input type="checkbox" name="situacion" value="Pensionado/a"><span class="custom-box"></span><span class="option-text">Pensionado/a</span></label>
         <label class="option-item"><input type="checkbox" name="situacion" value="Empleado sector privado"><span class="custom-box"></span><span class="option-text">Empleado/a en sector privado</span></label>
         <label class="option-item"><input type="checkbox" name="situacion" value="Empleado sector público"><span class="custom-box"></span><span class="option-text">Empleado/a en sector público</span></label>
@@ -1180,19 +1180,26 @@ function checkRadio(name, errId) {
    CHECKBOX GRIDS — con contador CORRECCIÓN 6
 ═══════════════════════════════ */
 function initCheckboxGrids() {
-  document.querySelectorAll('.options-grid[data-max]').forEach(grid => {
-    const max = parseInt(grid.dataset.max);
-    const counterId = 'cnt-' + grid.id.replace('-grid', '').replace('salud-cambios', 'salud').replace('derechos-salud', 'derechos').replace('salud-mental', 'salmental').replace('apoyo-eco', 'apoyo').replace('reconocimiento', 'reconocimiento').replace('prioridades', 'prioridades').replace('una-cosa', '').replace('roles', 'roles').replace('empleo', 'empleo').replace('vivienda', 'vivienda').replace('participar', '');
+  document.querySelectorAll('.options-grid').forEach(grid => {
+    const max = grid.dataset.max ? parseInt(grid.dataset.max) : 999;
 
     grid.querySelectorAll('.option-item:not(.radio-item)').forEach(item => {
       const inp = item.querySelector('input[type="checkbox"]');
       if (!inp) return;
+
+      // Click on the label area (not the input itself) — toggle manually
       item.addEventListener('click', e => {
-        if (e.target === inp) return;
-        inp.checked = !inp.checked;
-        inp.dispatchEvent(new Event('change', { bubbles: true }));
+        if (e.target === inp) return; // let native checkbox handle it
         e.preventDefault();
+        const allInp = grid.querySelectorAll('input[type="checkbox"]');
+        const totalChecked = [...allInp].filter(i => i.checked).length;
+        if (!inp.checked && totalChecked >= max) return; // at limit, don't check
+        inp.checked = !inp.checked;
+        item.classList.toggle('checked', inp.checked);
+        updateGridCounter(grid, max);
       });
+
+      // Native checkbox change (e.g. keyboard or direct click on input)
       inp.addEventListener('change', () => {
         const allInp = grid.querySelectorAll('input[type="checkbox"]');
         const totalChecked = [...allInp].filter(i => i.checked).length;
