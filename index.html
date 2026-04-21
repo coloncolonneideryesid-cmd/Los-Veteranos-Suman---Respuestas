@@ -349,12 +349,10 @@ h1.campaign-title .title-accent { color: var(--gold); display: block; }
       <label class="question-label" for="fuerza">¿A qué fuerza perteneció? <span class="required-star">*</span></label>
       <select name="fuerza" id="fuerza" required>
         <option value="">— Seleccione una opción —</option>
-        <option>Ejército Nacional</option>
-        <option>Armada Nacional</option>
-        <option>Fuerza Aérea Colombiana</option>
-        <option>Policía Nacional</option>
-        <option>Dirección de Inteligencia (DNI / DINTE)</option>
-        <option>Otra</option>
+        <option value="Ejército Nacional">Ejército Nacional</option>
+        <option value="Armada Nacional">Armada Nacional</option>
+        <option value="Fuerza Aérea Colombiana">Fuerza Aérea Colombiana</option>
+        <option value="Policía Nacional">Policía Nacional</option>
       </select>
       <div class="field-error" id="err-fuerza">Por favor seleccione una fuerza.</div>
     </div>
@@ -366,24 +364,126 @@ h1.campaign-title .title-accent { color: var(--gold); display: block; }
       <label class="question-label" for="grado">¿Cuál fue su grado al momento del retiro? <span class="required-star">*</span></label>
       <select name="grado" id="grado" required>
         <option value="">— Seleccione su grado —</option>
-        <optgroup label="Tropa / Nivel básico">
-          <option>Soldado / Agente</option>
-          <option>Cabo / Suboficial</option>
-          <option>Sargento (cualquier grado)</option>
+
+        <optgroup label="── EJÉRCITO NACIONAL ──">
+          <optgroup label="Soldados">
+            <option>Soldado Profesional</option>
+            <option>Soldado Regular</option>
+          </optgroup>
+          <optgroup label="Suboficiales">
+            <option>Cabo Tercero</option>
+            <option>Cabo Segundo</option>
+            <option>Cabo Primero</option>
+            <option>Sargento Segundo</option>
+            <option>Sargento Primero</option>
+            <option>Sargento Vice Primero</option>
+            <option>Sargento Mayor</option>
+            <option>Sargento Mayor de Comando Conjunto</option>
+          </optgroup>
+          <optgroup label="Oficiales Subalternos">
+            <option>Subteniente (Ejército)</option>
+            <option>Teniente (Ejército)</option>
+            <option>Capitán (Ejército)</option>
+          </optgroup>
+          <optgroup label="Oficiales Superiores">
+            <option>Mayor (Ejército)</option>
+            <option>Teniente Coronel (Ejército)</option>
+            <option>Coronel (Ejército)</option>
+          </optgroup>
+          <optgroup label="Oficiales Generales">
+            <option>Brigadier General (Ejército)</option>
+            <option>Mayor General (Ejército)</option>
+            <option>General (Ejército)</option>
+          </optgroup>
         </optgroup>
-        <optgroup label="Oficiales subalternos">
-          <option>Subteniente / Subcomisario</option>
-          <option>Teniente / Comisario</option>
-          <option>Capitán / Intendente Jefe</option>
+
+        <optgroup label="── ARMADA NACIONAL ──">
+          <optgroup label="Marineros">
+            <option>Grumete</option>
+            <option>Marinero</option>
+          </optgroup>
+          <optgroup label="Suboficiales">
+            <option>Cabo Tercero (Armada)</option>
+            <option>Cabo Segundo (Armada)</option>
+            <option>Cabo Primero (Armada)</option>
+            <option>Sargento Segundo (Armada)</option>
+            <option>Sargento Primero (Armada)</option>
+            <option>Sargento Vice Primero (Armada)</option>
+            <option>Sargento Mayor (Armada)</option>
+            <option>Sargento Mayor de Comando Conjunto (Armada)</option>
+          </optgroup>
+          <optgroup label="Oficiales Subalternos">
+            <option>Alférez de Fragata</option>
+            <option>Teniente de Corbeta</option>
+            <option>Teniente de Navío</option>
+            <option>Capitán de Corbeta</option>
+          </optgroup>
+          <optgroup label="Oficiales Superiores">
+            <option>Capitán de Fragata</option>
+            <option>Capitán de Navío</option>
+          </optgroup>
+          <optgroup label="Almirantes">
+            <option>Contralmirante</option>
+            <option>Vicealmirante</option>
+            <option>Almirante</option>
+          </optgroup>
         </optgroup>
-        <optgroup label="Oficiales superiores">
-          <option>Mayor / Subcomandante</option>
-          <option>Teniente Coronel</option>
-          <option>Coronel / Coronel de Policía</option>
+
+        <optgroup label="── FUERZA AÉREA COLOMBIANA ──">
+          <optgroup label="Técnicos (Suboficiales FAC)">
+            <option>Aerotécnico</option>
+            <option>Técnico Tercero</option>
+            <option>Técnico Segundo</option>
+            <option>Técnico Primero</option>
+            <option>Técnico Vice Primero</option>
+            <option>Técnico Jefe</option>
+            <option>Técnico Jefe de Comando</option>
+          </optgroup>
+          <optgroup label="Oficiales Subalternos">
+            <option>Subteniente (FAC)</option>
+            <option>Teniente (FAC)</option>
+            <option>Capitán (FAC)</option>
+          </optgroup>
+          <optgroup label="Oficiales Superiores">
+            <option>Mayor (FAC)</option>
+            <option>Teniente Coronel (FAC)</option>
+            <option>Coronel (FAC)</option>
+          </optgroup>
+          <optgroup label="Oficiales Generales">
+            <option>Brigadier General (FAC)</option>
+            <option>Mayor General (FAC)</option>
+            <option>General del Aire</option>
+          </optgroup>
         </optgroup>
-        <optgroup label="Generalato / Almirantes">
-          <option>General / Almirante (cualquier estrella)</option>
+
+        <optgroup label="── POLICÍA NACIONAL ──">
+          <optgroup label="Nivel Básico">
+            <option>Patrullero</option>
+          </optgroup>
+          <optgroup label="Nivel Ejecutivo">
+            <option>Subintendente</option>
+            <option>Intendente</option>
+            <option>Intendente Jefe</option>
+            <option>Subcomisario</option>
+            <option>Comisario</option>
+          </optgroup>
+          <optgroup label="Oficiales Subalternos">
+            <option>Subteniente (Policía)</option>
+            <option>Teniente (Policía)</option>
+            <option>Capitán (Policía)</option>
+          </optgroup>
+          <optgroup label="Oficiales Superiores">
+            <option>Mayor (Policía)</option>
+            <option>Teniente Coronel (Policía)</option>
+            <option>Coronel (Policía)</option>
+          </optgroup>
+          <optgroup label="Oficiales Generales">
+            <option>Brigadier General (Policía)</option>
+            <option>Mayor General (Policía)</option>
+            <option>General (Policía)</option>
+          </optgroup>
         </optgroup>
+
         <option value="Prefiero no decir">Prefiero no decir</option>
       </select>
       <div class="field-error" id="err-grado">Por favor seleccione su grado.</div>
@@ -943,7 +1043,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTextareaCounters();
   initParticipacionLogic();
   initOtroFields();
-  loadFromLocalStorage(); // CORRECCIÓN 4: recuperar datos guardados
+  loadFromLocalStorage();
+  initGradoFilter(); // CORRECCIÓN 4: recuperar datos guardados
 });
 
 /* ═══════════════════════════════
@@ -1382,6 +1483,48 @@ document.getElementById('mainForm').addEventListener('submit', e => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 });
+
+/* ═══════════════════════════════
+   FILTRO DE GRADOS POR FUERZA
+═══════════════════════════════ */
+function initGradoFilter() {
+  const fuerzaSel = document.getElementById('fuerza');
+  const gradoSel = document.getElementById('grado');
+
+  // Map fuerza value to optgroup labels that should show
+  const fuerzaMap = {
+    'Ejército Nacional':       ['── EJÉRCITO NACIONAL ──'],
+    'Armada Nacional':         ['── ARMADA NACIONAL ──'],
+    'Fuerza Aérea Colombiana': ['── FUERZA AÉREA COLOMBIANA ──'],
+    'Policía Nacional':        ['── POLICÍA NACIONAL ──'],
+  };
+
+  function filterGrados() {
+    const selected = fuerzaSel.value;
+    const allowed = fuerzaMap[selected] || null;
+
+    // Reset grado selection
+    gradoSel.value = '';
+
+    // Show/hide top-level optgroups
+    Array.from(gradoSel.children).forEach(child => {
+      if (child.tagName === 'OPTGROUP') {
+        if (!allowed) {
+          child.style.display = '';
+        } else {
+          child.style.display = allowed.includes(child.label) ? '' : 'none';
+        }
+      }
+    });
+  }
+
+  fuerzaSel.addEventListener('change', filterGrados);
+  // Run on load to hide all if nothing selected
+  filterGrados();
+}
+
+// Init filter
+initGradoFilter();
 </script>
 </body>
 </html>
